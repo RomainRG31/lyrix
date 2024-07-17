@@ -1,12 +1,18 @@
-create table user (
-  id int unsigned primary key auto_increment not null,
-  email varchar(255) not null unique,
-  password varchar(255) not null
+CREATE TABLE user (
+  id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL
 );
 
-create table item (
-  id int unsigned primary key auto_increment not null,
-  title varchar(255) not null,
-  user_id int unsigned not null,
-  foreign key(user_id) references user(id)
+CREATE TABLE music (
+  id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  title VARCHAR(255) NOT NULL,
+  jacket TEXT,
+  artist VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE favorites (
+  user_id INT UNSIGNED NOT NULL,
+  music_id INT UNSIGNED NOT NULL,
+  PRIMARY KEY (user_id, music_id),
+  FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE,
+  FOREIGN KEY (music_id) REFERENCES music(id) ON DELETE CASCADE
 );
