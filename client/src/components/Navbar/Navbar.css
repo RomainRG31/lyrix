@@ -1,0 +1,38 @@
+@font-face {
+  font-family: font;
+  src: url("../../fonts/Cascadia.ttf");
+}
+
+.bg-navbar {
+  background-color: #141414;
+  padding-inline: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left-block-navbar {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.block-navbar-btn {
+  display: flex;
+  gap: 2rem;
+}
+
+.sign-in.favorites {
+  padding: 0.5rem 1.5rem;
+  border-radius: 1.5rem;
+  font-family: font;
+  border: solid 3px #7befbe;
+  background-color: black;
+  color: white;
+}
+.register.get-started {
+  padding: 0.5rem 1.5rem;
+  border-radius: 1.5rem;
+  font-family: font;
+  background: linear-gradient(180deg, #a2e6c9 0%, #7befbe 44%, #27f7a0 100%);
+}

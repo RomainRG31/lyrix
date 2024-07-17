@@ -1,0 +1,72 @@
+.green-sentence {
+  color: #47eea8;
+}
+
+h1 {
+  line-height: 3rem;
+  text-align: center;
+}
+
+.block-home {
+  background: linear-gradient(180deg, #000000 46%, #47eea8 100%);
+  height: calc(100vh - 264px);
+  margin-top: 200px;
+  border-radius: 5rem;
+  margin-inline: 2rem;
+}
+
+h2 {
+  color: black;
+  font-size: 16px;
+}
+
+.up-block-home {
+  position: relative;
+  text-align: center;
+  margin-top: 11rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  & p {
+    width: 50%;
+    text-align: center;
+    line-height: 1.8rem;
+    font-size: 16px;
+    color: #ffffff50;
+  }
+}
+
+.helmet {
+  position: absolute;
+  top: 15%;
+  left: 3%;
+  transform: rotate(320deg);
+}
+
+a {
+  text-decoration: none;
+}
+a:visited {
+  color: #000000;
+}
+
+.block-sponsors-logo {
+  display: flex;
+  gap: 4rem;
+}
+
+.down-block-home {
+  margin-top: 5rem;
+  margin-bottom: 2rem;
+}
+
+.deezer.spotify.itunes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  & p {
+    color: black;
+  }
+}
