@@ -10,9 +10,9 @@ function NavBar() {
         <Link to="/">
           <img src={logo} width={64} height={64} alt="" />
         </Link>
-        <Link to="/favorites">
+        <Link to="/music-form">
           <button className="sign-in favorites" type="button">
-            Mes favoris
+            Ajouter une musique
           </button>
         </Link>
       </div>

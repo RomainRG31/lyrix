@@ -7,7 +7,7 @@ import App from "./App";
 import Layout from "./components/Layouts/Layout";
 import Search from "./pages/Search/Search";
 import Summary from "./pages/Summary/Summary";
-import Favorites from "./pages/Favorites/Favorites";
+import MusicForm from "./pages/MusicForm/MusicForm";
 
 const router = createBrowserRouter([
   {
@@ -27,8 +27,8 @@ const router = createBrowserRouter([
         element: <Summary />,
       },
       {
-        path: "/favorites",
-        element: <Favorites />,
+        path: "/music-form",
+        element: <MusicForm />,
       },
     ],
   },
