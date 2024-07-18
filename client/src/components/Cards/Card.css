@@ -1,0 +1,23 @@
+.block-card {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: flex-start;
+  & img {
+    border-radius: 1rem;
+  }
+
+  & p {
+    font-size: 0.8rem;
+  }
+}
+
+.heart-fill {
+  position: absolute;
+  top: 8%;
+  right: 8%;
+}
+
+h3 {
+  font-size: 1.2rem;
+}

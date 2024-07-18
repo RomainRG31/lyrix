@@ -29,10 +29,12 @@
   border: solid 3px #7befbe;
   background-color: black;
   color: white;
+  cursor: pointer;
 }
 .register.get-started {
   padding: 0.5rem 1.5rem;
   border-radius: 1.5rem;
   font-family: font;
   background: linear-gradient(180deg, #a2e6c9 0%, #7befbe 44%, #27f7a0 100%);
+  cursor: pointer;
 }
