@@ -10,17 +10,19 @@ function Home() {
     <div className="block-home">
       <div className="up-block-home">
         <h1>
-          Toute la magie de la musique,
+          Découvrez et partagez la musique,
           <br />
           <span className="green-sentence">
-            condensée en résumés intelligents
+            votre bibliothèque musicale collaborative
           </span>
         </h1>
         <p>
-          Notre application transforme chaque chanson en un résumé précis et
-          captivant, vous permettant de découvrir l'essence de chaque morceau en
-          un instant.
+          Avec notre bibliothèque musicale collaborative, chaque utilisateur
+          peut ajouter et découvrir de nouvelles chansons. Profitez de résumés
+          intelligents et captivants pour explorer l'essence de chaque morceau
+          partagé par notre communauté.
         </p>
+
         <Link className="register get-started" to="/search">
           Commencer maintenant
         </Link>

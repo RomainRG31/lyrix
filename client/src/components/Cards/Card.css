@@ -21,3 +21,16 @@
 h3 {
   font-size: 1.2rem;
 }
+
+.block-pen-basket {
+  display: flex;
+  gap: 1rem;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  & button {
+    cursor: pointer;
+    background: none;
+    border: none;
+  }
+}

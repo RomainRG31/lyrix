@@ -23,6 +23,36 @@ const CardDatas = [
     artist: "Too Many Zooz",
     title: "Like This",
   },
+  {
+    id: 5,
+    img: "../../src/assets/images/nervo.jpg",
+    artist: "Nervo",
+    title: "Revolution",
+  },
+  {
+    id: 6,
+    img: "../../src/assets/images/queen.jpeg",
+    artist: "Queen",
+    title: "Bohemian Rhapsody",
+  },
+  {
+    id: 7,
+    img: "../../src/assets/images/sia.jpeg",
+    artist: "Sia",
+    title: "Chandelier",
+  },
+  {
+    id: 8,
+    img: "../../src/assets/images/sangria.jpg",
+    artist: "Sangria Gratuite",
+    title: "Summer Vibes",
+  },
+  {
+    id: 9,
+    img: "../../src/assets/images/louise.jpeg",
+    artist: "Louise Attaque",
+    title: "Léa",
+  },
 ];
 
 export default CardDatas;

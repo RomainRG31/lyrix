@@ -4,8 +4,8 @@
 
 .block-home {
   background: linear-gradient(180deg, #000000 46%, #47eea8 100%);
-  height: calc(100vh - 264px);
-  margin-top: 200px;
+  height: calc(100vh - 230px);
+  margin-top: 140px;
   border-radius: 5rem;
   margin-inline: 2rem;
 }

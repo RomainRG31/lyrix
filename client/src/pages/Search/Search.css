@@ -44,9 +44,12 @@ input {
 }
 
 .down-block-search {
-  display: flex;
-  justify-content: space-around;
   width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  width: 100%;
+  gap: 5rem;
   & p {
     display: inherit;
     margin: inherit;

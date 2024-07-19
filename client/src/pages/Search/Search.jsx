@@ -1,89 +1,88 @@
-// import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import "./Search.css";
-// import note from "../../assets/images/note.svg";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Card from "../../components/Cards/Card";
 import CardDatas from "../../services/CardDatas";
 
 function Search() {
-  // const [songName, setSongName] = useState("");
-  // const [summary, setSummary] = useState("");
+  const [music, setMusics] = useState([]);
+  const [hardCodedCards, setHardCodedCards] = useState(CardDatas);
+  const location = useLocation();
 
-  // const handleInputChange = (event) => {
-  //   setSongName(event.target.value);
-  // };
+  useEffect(() => {
+    if (location.state?.showToast) {
+      toast.success("Musique ajoutée avec succès !", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: true,
+        style: {
+          background:
+            "linear-gradient(180deg, #a2e6c9 0%, #7befbe 44%, #27f7a0 100%)",
+          color: "black",
+          marginTop: "50px",
+        },
+      });
+    }
+  }, [location]);
 
-  // const handleSearch = async () => {
-  //   try {
-  //     const response = await fetch("https://api.openai.com/v1/completions", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Authorization: `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`,
-  //       },
-  //       body: JSON.stringify({
-  //         model: "gpt-3.5-turbo",
-  //         prompt: `Donne un résumé en français de la chanson ${songName}.`,
-  //         max_tokens: 150,
-  //         n: 1,
-  //         stop: null,
-  //         temperature: 0.7,
-  //       }),
-  //     });
+  const fetchMusics = async () => {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/music`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (response.ok) {
+        const data = await response.json();
+        setMusics(data);
+      }
+    } catch (error) {
+      console.error("Erreur lors de la récupération des musiques:", error);
+    }
+  };
 
-  //     if (!response.ok) {
-  //       throw new Error(`HTTP error! status: ${response.status}`);
-  //     }
+  useEffect(() => {
+    fetchMusics();
+  }, []);
 
-  //     const data = await response.json();
-  //     if (data.choices && data.choices.length > 0) {
-  //       const summaryText = data.choices[0].text.trim();
-  //       setSummary(summaryText);
-  //     } else {
-  //       setSummary(
-  //         "Désolé, nous n'avons pas pu obtenir un résumé pour cette chanson."
-  //       );
-  //     }
-  //   } catch (error) {
-  //     console.error("Error fetching summary:", error);
-  //     setSummary(
-  //       "Désolé, nous n'avons pas pu obtenir un résumé pour cette chanson."
-  //     );
-  //   }
-  // };
+  const handleDelete = (id) => {
+    setHardCodedCards(hardCodedCards.filter((card) => card.id !== id));
+  };
 
   return (
     <div className="block-search">
-      {/* <h1>Je trouve mon résumé</h1>
-      <label htmlFor="name">
-        Veuillez taper le nom de l&apos;artiste ainsi que le titre ( ex: Eminem
-        - Lose Yourself ):
-      </label>
-      <input
-        type="text"
-        id="name"
-        name="name"
-        value={songName}
-        onChange={handleInputChange}
-        required
-        minLength="4"
-        maxLength="100"
-        size="40"
-      />
-      <button type="button" className="note" onClick={handleSearch}>
-        <img src={note} width={32} height={32} alt="note" />
-      </button>
-      {summary && <p className="summary">{summary}</p>} */}
       <p>Découvrez les chansons les plus populaires de la communauté : </p>
       <div className="down-block-search">
-        {CardDatas.map((data) => (
+        {hardCodedCards.map((data) => (
           <Card
             key={data.id}
+            id={data.id}
             img={data.img}
             artist={data.artist}
             title={data.title}
+            onUpdate={fetchMusics}
+            onDelete={handleDelete}
+          />
+        ))}
+        {music.map((e) => (
+          <Card
+            key={e.id}
+            id={e.id}
+            img={e.jacket}
+            artist={e.artist}
+            title={e.title}
+            onUpdate={fetchMusics}
+            onDelete={() => {}}
           />
         ))}
       </div>
+      <ToastContainer />
     </div>
   );
 }
