@@ -1,6 +1,6 @@
 CREATE TABLE music (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    jacket VARCHAR(255) NOT NULL,
+    jacket LONGTEXT NOT NULL,
     title VARCHAR(255) NOT NULL,
     artist VARCHAR(255) NOT NULL
 );

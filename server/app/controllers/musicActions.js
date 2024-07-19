@@ -1,67 +1,65 @@
-// Import access to database tables
 const tables = require("../../database/tables");
 
-// The B of BREAD - Browse (Read All) operation
 const browse = async (req, res, next) => {
   try {
-    // Fetch all musics from the database
-    const musics = await tables.music.readAll();
-
-    // Respond with the musics in JSON format
-    res.json(musics);
+    const music = await tables.music.readAll();
+    res.json(music);
   } catch (err) {
-    // Pass any errors to the error-handling middleware
     next(err);
   }
 };
 
-// The R of BREAD - Read operation
 const read = async (req, res, next) => {
   try {
-    // Fetch a specific music from the database based on the provided ID
     const music = await tables.music.read(req.params.id);
-
-    // If the music is not found, respond with HTTP 404 (Not Found)
-    // Otherwise, respond with the music in JSON format
     if (music == null) {
       res.sendStatus(404);
     } else {
       res.json(music);
     }
   } catch (err) {
-    // Pass any errors to the error-handling middleware
     next(err);
   }
 };
 
-// The E of BREAD - Edit (Update) operation
-// This operation is not yet implemented
-
-// The A of BREAD - Add (Create) operation
 const add = async (req, res, next) => {
-  // Extract the music data from the request body
   const music = req.body;
 
   try {
-    // Insert the music into the database
     const insertId = await tables.music.create(music);
-
-    // Respond with HTTP 201 (Created) and the ID of the newly inserted music
     res.status(201).json({ insertId });
   } catch (err) {
-    // Pass any errors to the error-handling middleware
     next(err);
   }
 };
 
-// The D of BREAD - Destroy (Delete) operation
-// This operation is not yet implemented
+const update = async (req, res, next) => {
+  const { id } = req.params;
+  const music = req.body;
 
-// Ready to export the controller functions
+  try {
+    await tables.music.update(id, music);
+    res.sendStatus(204);
+  } catch (err) {
+    next(err);
+  }
+};
+
+const remove = async (req, res, next) => {
+  const { id } = req.params;
+
+  try {
+    await tables.music.delete(id);
+    res.sendStatus(204);
+  } catch (err) {
+    next(err);
+  }
+};
+
 module.exports = {
   browse,
   read,
-  // edit,
   add,
-  // destroy,
+  update,
+  remove,
 };

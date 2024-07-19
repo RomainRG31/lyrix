@@ -6,7 +6,6 @@ class MusicRepository extends AbstractRepository {
   }
 
   async create(music) {
-    // Execute the SQL INSERT query to add a new music to the "music" table
     const [result] = await this.database.query(
       `insert into ${this.table} (jacket, title, artist) values (?, ?, ?)`,
       [music.jacket, music.title, music.artist]
@@ -15,14 +14,21 @@ class MusicRepository extends AbstractRepository {
     return result.insertId;
   }
 
-  //   async readByEmail(email) {
-  //     const [rows] = await this.database.query(
-  //       `select * from ${this.table} where email = ?`,
-  //       [email]
-  //     );
+  async readAll() {
+    const [rows] = await this.database.query(`select * from ${this.table}`);
+    return rows;
+  }
 
-  //     return rows[0];
-  //   }
+  async update(id, music) {
+    await this.database.query(
+      `update ${this.table} set jacket = ?, title = ?, artist = ? where id = ?`,
+      [music.jacket, music.title, music.artist, id]
+    );
+  }
+
+  async delete(id) {
+    await this.database.query(`delete from ${this.table} where id = ?`, [id]);
+  }
 }
 
 module.exports = MusicRepository;

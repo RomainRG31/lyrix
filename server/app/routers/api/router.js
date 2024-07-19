@@ -6,6 +6,6 @@ const itemsRouter = require("./items/router");
 const musicRouter = require("./music/router");
 
 router.use("/items", itemsRouter);
-router.use("/music-form", musicRouter);
+router.use("/music", musicRouter);
 
 module.exports = router;
